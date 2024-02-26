@@ -1,0 +1,11 @@
+.dashboardLayout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  .content {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background-color: #ebdfd7;
+  }
+}
