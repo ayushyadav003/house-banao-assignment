@@ -19,6 +19,34 @@ body {
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
+.css-1ex1afd-MuiTableCell-root{
+  padding: 2px !important;
+}
+.css-1ygcj2i-MuiTableCell-root{
+  padding: 2px 4px !important;
+}
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px !important; /* Width of the scrollbar */
+  height: 7px;
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: lightgray; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Change color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lightgray;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

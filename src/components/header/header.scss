@@ -4,8 +4,43 @@
   .inner {
     display: flex;
     align-items: center;
+    gap: 10px;
     justify-content: space-between;
     padding: 20px 30px;
+    div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      .bellIcon {
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+      }
+    }
+    .userWidget {
+      background-color: #fff;
+      border-radius: 30px;
+      padding: 5px 10px;
+      img {
+        height: 30px;
+      }
+      div {
+        display: flex;
+        cursor: pointer;
+        gap: 0;
+        align-items: start;
+        flex-direction: column;
+        p {
+          margin: 0;
+          font-size: 15px;
+          font-weight: 600;
+        }
+        span {
+          color: gray;
+          font-size: 14px;
+        }
+      }
+    }
   }
   h2 {
     font-size: 2em;

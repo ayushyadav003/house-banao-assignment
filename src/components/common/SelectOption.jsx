@@ -1,4 +1,4 @@
-import { MenuItem, Select } from '@mui/material'
+import { MenuItem, Select } from "@mui/material";
 
 export default function SelectOption({ value, setValue, options }) {
   return (
@@ -11,11 +11,11 @@ export default function SelectOption({ value, setValue, options }) {
       value={value}
       onChange={(e) => setValue(e.target.value)}
       style={{
-        height: '38px',
-        borderRadius: '20px',
-        color: '#000',
-        backgroundColor: '#fff',
-        width: 'fit-content',
+        height: "35px",
+        borderRadius: "20px",
+        color: "#000",
+        backgroundColor: "#fff",
+        width: "fit-content",
       }}
     >
       {options.map((option, i) => (
@@ -24,5 +24,5 @@ export default function SelectOption({ value, setValue, options }) {
         </MenuItem>
       ))}
     </Select>
-  )
+  );
 }

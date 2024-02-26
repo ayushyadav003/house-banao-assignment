@@ -1,81 +1,81 @@
-import { useEffect, useState } from 'react'
-import SemiCircleProgressBar from 'react-progressbar-semicircle'
-import './dashboard.scss'
-import Header from '../../components/header/Header'
-import SelectOption from '../../components/common/SelectOption'
-import { apiConfig } from '../../api/apiConfig'
-import axios from 'axios'
-import CommonTable from '../../components/common/CommonTable'
-import { Skeleton } from '@mui/material'
-import TotalTasks from '../../components/totalTasks/TotalTasks'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SemiCircleProgressBar from "react-progressbar-semicircle";
+import { Skeleton } from "@mui/material";
+import "./dashboard.scss";
+import Header from "../../components/header/Header";
+import SelectOption from "../../components/common/SelectOption";
+import { apiConfig } from "../../api/apiConfig";
+import CommonTable from "../../components/common/CommonTable";
+import TotalTasks from "../../components/totalTasks/TotalTasks";
+import {
+  managerOptions,
+  overViewFilterOpyions,
+  projectOptions,
+  statusOption,
+  workloadOption,
+} from "../../utils/dashboardUtils";
 
-const overViewFilterOpyions = [
-  { title: 'Last 30 days', val: 30 },
-  { title: 'Last 60 days', val: 60 },
-  { title: 'Last 90 days', val: 90 },
-]
-const projectOptions = [
-  { title: 'Project', val: '' },
-  { title: 'Media channel branding', val: 60 },
-  { title: 'Data scale Ai app', val: 90 },
-]
-const managerOptions = [
-  { title: 'Project Manager', val: '' },
-  { title: 'Om prakash sao', val: 'Om prakash sao' },
-  { title: 'Neilsan mando', val: 'Neilsan mando' },
-]
-const statusOption = [
-  { title: 'Status', val: '' },
-  { title: 'Completed', val: 'Completed' },
-  { title: 'Delayed', val: 'Delayed' },
-  { title: 'At rish', val: 'At risk' },
-]
-
-const head = ['Name', 'Project manager', 'Due date', 'Status', 'Progress']
+const head = ["Name", "Project manager", "Due date", "Status", "Progress"];
 
 export default function Dashboard() {
-  const [overViewFilter, setOverviewFilter] = useState(30)
-  const [projectFilter, setProjectFilter] = useState('')
-  const [managerFilter, setManagerFilter] = useState('')
-  const [StatusFilter, setStatusFilter] = useState('')
-  const [overviewData, setOverviewData] = useState([])
-  const [projectSummary, setProjectSummary] = useState([])
+  const [overViewFilter, setOverviewFilter] = useState(30);
+  const [projectFilter, setProjectFilter] = useState("");
+  const [managerFilter, setManagerFilter] = useState("");
+  const [StatusFilter, setStatusFilter] = useState("");
+  const [workloadFilter, setWorkloadFilter] = useState("");
+  const [overviewData, setOverviewData] = useState([]);
+  const [projectSummary, setProjectSummary] = useState([]);
+  const [workLoadData, setWorkLoadData] = useState([]);
 
   const getOverview = async () => {
     try {
       const apiOptions = {
-        method: 'Get',
-        url: apiConfig['overview'],
-      }
-      const response = await axios(apiOptions)
+        method: "Get",
+        url: apiConfig["overview"],
+      };
+      const response = await axios(apiOptions);
       if (response?.status === 200) {
-        console.log(response)
-        setOverviewData(response.data)
+        setOverviewData(response.data);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const getProjectSummary = async () => {
     try {
       const apiOptions = {
-        method: 'Get',
-        url: apiConfig['projectSummary'],
-      }
-      const response = await axios(apiOptions)
+        method: "Get",
+        url: apiConfig["projectSummary"],
+      };
+      const response = await axios(apiOptions);
       if (response?.status === 200) {
-        console.log('2', response)
-        setProjectSummary(response.data)
+        setProjectSummary(response.data);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+  const getWorkLoadData = async () => {
+    try {
+      const apiOptions = {
+        method: "Get",
+        url: apiConfig["workLoad"],
+      };
+      const response = await axios(apiOptions);
+      if (response?.status === 200) {
+        setWorkLoadData(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    getOverview()
-    getProjectSummary()
-  }, [])
+    getOverview();
+    getProjectSummary();
+    getWorkLoadData();
+  }, []);
 
   return (
     <div className="dashboardPage">
@@ -118,12 +118,12 @@ export default function Dashboard() {
                 value={projectFilter}
                 setValue={setProjectFilter}
                 options={projectOptions}
-              />{' '}
+              />{" "}
               <SelectOption
                 value={managerFilter}
                 setValue={setManagerFilter}
                 options={managerOptions}
-              />{' '}
+              />{" "}
               <SelectOption
                 value={StatusFilter}
                 setValue={setStatusFilter}
@@ -155,7 +155,7 @@ export default function Dashboard() {
           <div className="progressWrapper">
             <SemiCircleProgressBar
               percentage={95}
-              diameter={380}
+              diameter={350}
               strokeWidth={20}
             />
             <div className="progressValue">
@@ -169,15 +169,15 @@ export default function Dashboard() {
               <span>Total projects</span>
             </div>
             <div>
-              <p style={{ color: 'green' }}>26</p>
+              <p style={{ color: "green" }}>26</p>
               <span>Completed</span>
             </div>
-            <div style={{ color: 'gold' }}>
+            <div style={{ color: "gold" }}>
               <p>35</p>
               <span>Delayed</span>
             </div>
             <div>
-              <p style={{ color: 'red' }}>35</p>
+              <p style={{ color: "red" }}>35</p>
               <span>On going</span>
             </div>
           </div>
@@ -189,44 +189,32 @@ export default function Dashboard() {
         </div>
         <div className="inner2">
           <div className="sectionHeader">
-            <h3>Overall Progress</h3>
+            <h3>Projects Workload</h3>
             <SelectOption
-              value={projectFilter}
-              setValue={setProjectFilter}
-              options={projectOptions}
+              value={workloadFilter}
+              setValue={setWorkloadFilter}
+              options={workloadOption}
             />
           </div>
-          <div className="progressWrapper">
-            <SemiCircleProgressBar
-              percentage={95}
-              diameter={380}
-              strokeWidth={20}
-            />
-            <div className="progressValue">
-              <p>72%</p>
-              <span>Completed</span>
-            </div>
-          </div>
-          <div className="progressDetails">
-            <div>
-              <p>95</p>
-              <span>Total projects</span>
-            </div>
-            <div>
-              <p style={{ color: 'green' }}>26</p>
-              <span>Completed</span>
-            </div>
-            <div style={{ color: 'gold' }}>
-              <p>35</p>
-              <span>Delayed</span>
-            </div>
-            <div>
-              <p style={{ color: 'red' }}>35</p>
-              <span>On going</span>
-            </div>
+          <div className="wrokLoad">
+            {workLoadData.length > 0 ? (
+              workLoadData.map((data, i) => (
+                <div key={i}>
+                  <span style={{ background: "#000", color: "#fff" }}>
+                    {data?.load}
+                  </span>
+                  {[...Array(data?.val)].map((item, i) => (
+                    <span></span>
+                  ))}
+                  <p>{data?.name}</p>
+                </div>
+              ))
+            ) : (
+              <Skeleton variant="rectangular" width="100%" height={220} />
+            )}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

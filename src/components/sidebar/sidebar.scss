@@ -2,8 +2,9 @@
   background-color: #000;
   color: #fff;
   height: 100%;
-  transition: width 0.4s ease-in-out;
+  transition: width 0.2s ease-in-out;
   position: relative;
+
   .sidebarSwitcher {
     right: -15px;
     top: 20px;
@@ -17,24 +18,80 @@
       align-items: center;
       justify-content: center;
       height: 30px;
-      width: 30px;
+      width: 28px;
     }
   }
-  .optionsWrapper {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 20px 30px;
+  .logo {
+    width: 150px;
+    margin: 10px 10px 0 30px;
+  }
+  .createProject {
+    padding: 0 20px;
+    margin-top: 10%;
     div {
       display: flex;
       align-items: center;
-      gap: 16px;
-      transition: width 0.4s ease-in-out;
+      gap: 1rem;
+      color: #000;
+      // width: 10px;
+      height: 47px;
+      background-color: #fff;
+      border-radius: 24px;
+      padding: 0 5px;
+      span {
+        color: #fff;
+        border-radius: 50%;
+        padding: 5px 5px 2px 5px;
+        background-color: #e65f2b;
+      }
+      p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 500;
+      }
+    }
+  }
+  .optionsWrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding: 0 30px;
+    overflow: auto;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: width 0.2s ease-in-out;
       cursor: pointer;
       p {
         margin: -5px 0 0 0;
       }
     }
+    .showOption {
+      width: 150px;
+      height: fit-content;
+      border-radius: 24px;
+      padding: 10px 20px;
+    }
+    .showIconOption {
+      width: 25px;
+      overflow: hidden;
+      height: 45px;
+      border-radius: 50%;
+      padding: 0 10px;
+    }
+  }
+  .endOption {
+    color: #fff;
+    background-color: #e65f2b;
+    width: fit-content;
+    padding: 10px 10px 7px 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    cursor: pointer;
+    left: 2px;
   }
 }
