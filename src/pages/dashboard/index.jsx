@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SemiCircleProgressBar from "react-progressbar-semicircle";
 import { Skeleton } from "@mui/material";
 import "./dashboard.scss";
 import Header from "../../components/header/Header";
@@ -153,13 +152,15 @@ export default function Dashboard() {
             />
           </div>
           <div className="progressWrapper">
-            <SemiCircleProgressBar
-              percentage={95}
-              diameter={350}
-              strokeWidth={20}
-            />
+            <div
+              role="progressbar"
+              aria-valuenow="33"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ "--value": 33 }}
+            ></div>
+
             <div className="progressValue">
-              <p>72%</p>
               <span>Completed</span>
             </div>
           </div>
