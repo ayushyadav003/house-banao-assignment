@@ -39,13 +39,36 @@ export default function CommonTable({ head, data, type }) {
                       {row?.duesDate || '--'}
                     </TableCell>
                     <TableCell component="th" scope="row">
-                      {row?.status}
+                      <span
+                        style={{
+                          backgroundColor:
+                            row.status === 'Completed'
+                              ? '#cbdac4'
+                              : row.status === 'Delayed'
+                              ? '#efe0c5'
+                              : row.status === 'At rist'
+                              ? '#f1c6c1'
+                              : '#efd1c4',
+                          color:
+                            row.status === 'Completed'
+                              ? '#259737'
+                              : row.status === 'Delayed'
+                              ? '#e1ab24'
+                              : row.status === 'At rist'
+                              ? '#ef3e3a'
+                              : '#e8764a',
+                        }}
+                        className="statusWrapper"
+                      >
+                        {row?.status}
+                      </span>
                     </TableCell>
                     <TableCell component="th" scope="row">
-                      <span>
-                        <span>
-                          <span>100%</span>
-                        </span>
+                      <span className="progress">
+                        100%
+                        {/* <span className="progressInner1">
+                          <span className="progressInner2">100%</span> */}
+                        {/* </span> */}
                       </span>
                     </TableCell>
                   </>

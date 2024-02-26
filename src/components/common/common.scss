@@ -4,4 +4,54 @@
   .boldCell {
     font-weight: 600;
   }
+  .statusWrapper {
+    padding: 5px 10px;
+    border-radius: 12px;
+  }
+  .progress {
+    background-color: #dfd8d3;
+    // padding: 15px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    font-size: 10px;
+    font-weight: 600;
+    position: relative;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    position: relative;
+    overflow: hidden;
+
+    // .progressInner1 {
+    //   background-color: red;
+    //   width: 40px;
+    //   border-radius: 25%;
+    //   height: 50%;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    // }
+    // .progressInner2 {
+    //   background-color: #f2eae5;
+    //   width: 30px;
+    //   border-radius: 50%;
+    //   height: 30px;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    // }
+  }
+  .progress::after {
+    content: '';
+    position: absolute;
+    top: -5px; /* Adjust to position the border correctly */
+    left: -5px; /* Adjust to position the border correctly */
+    width: calc(100% + 10px); /* Adjust to cover the entire border area */
+    height: calc(100% + 10px); /* Adjust to cover the entire border area */
+    border-radius: 50%;
+    border: 10px solid red; /* Set the color of the border */
+    z-index: 99;
+  }
 }
